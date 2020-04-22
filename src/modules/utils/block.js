@@ -1,5 +1,3 @@
-import { getRandomNum } from "./getRandomNum";
-
 export const createBlock = (parentId, width, height, bgColor) => {
   const parent = document.getElementById(parentId);
 
@@ -7,11 +5,13 @@ export const createBlock = (parentId, width, height, bgColor) => {
   block.style.width = `${width}px`;
   block.style.height = `${height}px`;
   block.style.marginRight = `${Math.floor(width / 5)}px`;
-  block.style.fontSize = `${Math.floor(width / 20)}px`;
+  block.style.fontSize = `${Math.floor(width / 5)}px`;
   block.style.backgroundColor = bgColor;
   block.classList = "block";
 
-  block.innerText = height;
+  if (width > 23) {
+    block.innerText = height;
+  }
   block.dataset.value = height;
 
   parent.appendChild(block);

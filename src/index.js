@@ -32,6 +32,7 @@ class SortingVisualizer {
     this.containerId = containerId;
     this.width = width;
     this.height = height;
+    this.minHeight = 40;
     this.n = n;
     this.nMin = 4;
     this.nMax = 100;
@@ -130,7 +131,7 @@ class SortingVisualizer {
       createBlock(
         this.containerId,
         blockWidth,
-        getRandomNum(this.height),
+        getRandomNum(this.minHeight, this.height),
         baseColor
       );
     }
@@ -138,7 +139,7 @@ class SortingVisualizer {
 
   randomizeBlocks(blocks) {
     blocks.forEach((block) => {
-      updateBlock(block, getRandomNum(this.height));
+      updateBlock(block, getRandomNum(this.minHeight, this.height));
       setBlockBackground(block, baseColor);
     });
   }
