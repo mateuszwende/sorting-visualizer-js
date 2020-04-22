@@ -129,6 +129,7 @@ input {
       &:disabled:hover {
         color: grey;
         background: transparent;
+        cursor: default;
       }
 
       &:hover {
