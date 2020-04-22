@@ -1,0 +1,147 @@
+@import "./modules/variables.scss";
+@import "./partials/input.scss";
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  width: 100vw;
+  overflow-x: hidden;
+}
+
+body {
+  height: 100vh;
+  width: 100%;
+  margin: 0;
+  background: #fafafa;
+}
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+html,
+button,
+label,
+input {
+  font-family: sans-serif;
+  font-size: 16px;
+}
+
+.container {
+  position: relative;
+  width: calc(100% - 30px);
+  max-width: 1200px;
+  height: calc(100% - 102px);
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  margin: 25px auto 0;
+}
+
+.base-line {
+  width: 100%;
+  border: 1px solid lightgrey;
+  margin-bottom: 25px;
+}
+
+.block {
+  position: relative;
+  display: inline-block;
+  padding-top: 10px;
+  text-align: center;
+  color: #fff;
+  -webkit-transform: translate3d(0, 0, 0);
+  -moz-transform: translate3d(0, 0, 0);
+  -ms-transform: translate3d(0, 0, 0);
+  -o-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+}
+
+.header {
+  width: 100%;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #232323;
+
+  &__inner {
+    height: 100%;
+    width: 100%;
+    max-width: 1200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .navigation {
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      > div {
+        color: #fff;
+        height: 100%;
+        padding: 0 15px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        transition: color 0.15s ease-in;
+
+        &:hover,
+        &:focus,
+        &:active,
+        &.active {
+          color: #1ee0eb;
+          background: lighten(#232323, 10%);
+        }
+      }
+    }
+
+    .input-group {
+      padding: 0 15px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      > label {
+        color: #fff;
+        padding-right: 15px;
+      }
+      > input {
+      }
+    }
+
+    .btn {
+      color: #fff;
+      height: 100%;
+      padding: 0 15px;
+      border: none;
+      background: transparent;
+      transition: background-color, color 0.15s ease-in;
+      outline: none;
+      cursor: pointer;
+
+      &:disabled,
+      &:disabled:hover {
+        color: grey;
+        background: transparent;
+      }
+
+      &:hover {
+        color: #1ee0eb;
+        background: lighten(#232323, 15%);
+      }
+
+      &:focus,
+      &:active {
+        outline: none;
+      }
+    }
+  }
+}

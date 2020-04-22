@@ -1,0 +1,23 @@
+{
+  "name": "algorithms-visualization",
+  "version": "1.0.0",
+  "description": "Visualisation of the popular sort algorithms",
+  "author": "Mateusz Wende",
+  "scripts": {
+    "start": "webpack-dev-server --open",
+    "build": "wepback"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "clean-webpack-plugin": "^3.0.0",
+    "css-loader": "^3.5.2",
+    "html-loader": "^1.1.0",
+    "html-webpack-plugin": "^4.2.0",
+    "sass": "^1.26.3",
+    "sass-loader": "^8.0.2",
+    "style-loader": "^1.1.4",
+    "webpack": "^4.42.1",
+    "webpack-cli": "^3.3.11",
+    "webpack-dev-server": "^3.10.3"
+  }
+}
