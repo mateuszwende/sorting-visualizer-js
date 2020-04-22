@@ -7,6 +7,8 @@ Currently there are:
 - Merge Sort
 - Quick Sort
 
+[DEMO](https://mateuszwende.github.io/sorting-visualizer-js/dist/)
+
 ## Setup
 
 `yarn start`
