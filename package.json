@@ -2,12 +2,16 @@
   "name": "algorithms-visualization",
   "version": "1.0.0",
   "description": "Visualisation of the popular sort algorithms",
+  "license": "ISC",
   "author": "Mateusz Wende",
   "scripts": {
     "start": "webpack-dev-server --open",
-    "build": "wepback"
+    "build": "webpack",
+    "deploy": "gh-pages -d dist"
   },
-  "dependencies": {},
+  "dependencies": {
+    "gh-pages": "^2.2.0"
+  },
   "devDependencies": {
     "clean-webpack-plugin": "^3.0.0",
     "css-loader": "^3.5.2",

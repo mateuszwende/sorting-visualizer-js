@@ -30,7 +30,7 @@ module.exports = {
     new HtmlWebpackPlugin({
       title: "Sort Algorithms Visualizer",
       template: "./src/templates/main.html",
-      favicon: "./src/assets/images/trend.png",
+      favicon: "./src/assets/images/favicon.png",
     }),
   ],
 };
