@@ -71,17 +71,13 @@ class SortingVisualizer {
 
     sortBtn.addEventListener("click", async (e) => {
       if (!this.isSorting) {
-        e.target.disabled = true;
-        randomizeBtn.disabled = true;
-        this.isSorting = true;
+        this.handleIsSortingState(true);
 
         const blocks = document.querySelectorAll(".block");
         await this.prepareBlocksForSort(blocks);
         await this.currentAlgorithm(blocks, this.n);
 
-        e.target.disabled = false;
-        randomizeBtn.disabled = false;
-        this.isSorting = false;
+        this.handleIsSortingState(false);
       }
     });
 
@@ -117,6 +113,13 @@ class SortingVisualizer {
     speedValInput.setAttribute("max", this.speedMax);
     speedValInput.setAttribute("value", this.speed);
     speedValInput.style.direction = "rtl";
+  }
+
+  handleIsSortingState(isSorting) {
+    this.isSorting = isSorting;
+    document.getElementById("sortBtn").disabled = isSorting;
+    document.getElementById("randomizeBtn").disabled = isSorting;
+    document.getElementById("elementsNum").disabled = isSorting;
   }
 
   createBlocks(n) {

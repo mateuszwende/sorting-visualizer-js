@@ -5,11 +5,8 @@ $input-track-lower-color: darken($main-color, 10%);
 $input-track-lower-focus-color: $main-color;
 $input-track-upper-color: $main-color;
 $input-track-upper-focus-color: lighten($main-color, 10%);
-// $input-track-color: #3071a9;
-// $input-track-lower-color: #2a6495;
-// $input-track-lower-focus-color: #3071a9;
-// $input-track-upper-color: #3071a9;
-// $input-track-upper-focus-color: #367ebd;
+$input-track-disabled-color: grey;
+$input-runnable-track-disabled-color: lightgrey;
 
 input[type="range"] {
   -webkit-appearance: none; /* Hides the slider so that custom slider can be made */
@@ -120,4 +117,31 @@ input[type="range"]::-ms-fill-upper {
 }
 input[type="range"]:focus::-ms-fill-upper {
   background: $input-track-upper-focus-color;
+}
+
+input[type="range"]:disabled {
+  &::-webkit-slider-thumb {
+    background-color: $input-track-disabled-color;
+    border-color: $input-track-disabled-color;
+    cursor: default;
+  }
+
+  &::-webkit-slider-runnable-track {
+    background-color: $input-runnable-track-disabled-color;
+    cursor: default;
+  }
+
+  &::-moz-range-thumb {
+    background-color: $input-track-disabled-color;
+    border-color: $input-track-disabled-color;
+  }
+
+  &::-moz-range-track {
+    cursor: default;
+  }
+
+  &::-ms-thumb {
+    background-color: $input-track-disabled-color;
+    border-color: $input-track-disabled-color;
+  }
 }
