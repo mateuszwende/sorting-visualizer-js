@@ -11,14 +11,17 @@ import {
   baseColor,
   yellowColor,
 } from "../helpers/colors";
+import { withEndVisualization } from "../helpers/withEndVisualization";
 
-const partition = async (arr, start, end, blocks) => {
+const partition = async (arr, start, end, blocks, isStopped) => {
   let i = start + 1;
   let piv = arr[start];
 
   await visualizeBlock(blocks[start], yellowColor, getCurrentSpeed());
 
   for (let j = start + 1; j <= end; j++) {
+    if (isStopped()) return;
+
     const speed = getCurrentSpeed();
 
     await visualizeBlocks(blocks[i], blocks[j], greenColor, speed);
@@ -55,19 +58,20 @@ const partition = async (arr, start, end, blocks) => {
   return i - 1;
 };
 
-const quickSortAlgo = async (arr, start, end, blocks) => {
+const quickSortAlgo = async (arr, start, end, blocks, isStopped) => {
   if (start < end) {
-    let pivotPos = await partition(arr, start, end, blocks);
+    let pivotPos = await partition(arr, start, end, blocks, isStopped);
+    if (isStopped()) return;
 
-    await quickSortAlgo(arr, start, pivotPos - 1, blocks);
-    await quickSortAlgo(arr, pivotPos + 1, end, blocks);
+    await quickSortAlgo(arr, start, pivotPos - 1, blocks, isStopped);
+    await quickSortAlgo(arr, pivotPos + 1, end, blocks, isStopped);
   }
 };
 
-const quickSort = async (blocks, n) => {
+const quickSort = async (blocks, n, isStopped) => {
   const arr = createValuesArrFromBlocks(blocks);
 
-  await quickSortAlgo(arr, 0, arr.length - 1, blocks);
+  await quickSortAlgo(arr, 0, n - 1, blocks, isStopped);
 };
 
-export default quickSort;
+export default withEndVisualization(quickSort);

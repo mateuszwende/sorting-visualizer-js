@@ -2,8 +2,10 @@ import getCurrentSpeed from "./getCurrentSpeed";
 import { visualizeBlock } from "./block";
 import { purpleColor } from "./colors";
 
-export const withEndVisualization = async (func, blocks, n) => {
-  await func(blocks, n);
+export const withEndVisualization = (func) => async (blocks, n, isStopped) => {
+  await func(blocks, n, isStopped);
+
+  if (isStopped()) return;
 
   const speed = Math.min(getCurrentSpeed() + 1000 / n);
   for (let j = 0; j < n; j++) {

@@ -17,8 +17,11 @@ class SortingVisualizer {
     this.speedMin = 1;
     this.speedMax = 500;
     this.isSorting = false;
+    this.isStop = false;
     this.algorithms = algorithms;
     this.currentAlgorithm = null;
+
+    this.isStopped = this.isStopped.bind(this);
   }
 
   initialize() {
@@ -49,15 +52,17 @@ class SortingVisualizer {
 
   addBtnsEventListeners() {
     const sortBtn = document.getElementById("sortBtn");
+    const stopBtn = document.getElementById("stopBtn");
     const randomizeBtn = document.getElementById("randomizeBtn");
 
     sortBtn.addEventListener("click", async (e) => {
+      this.isStop = false;
       if (!this.isSorting) {
         this.handleIsSortingState(true);
 
         const blocks = document.querySelectorAll(".block");
         await this.prepareBlocksForSort(blocks);
-        await withEndVisualization(this.currentAlgorithm, blocks, this.n);
+        await this.currentAlgorithm(blocks, this.n, this.isStopped);
 
         this.handleIsSortingState(false);
       }
@@ -67,6 +72,14 @@ class SortingVisualizer {
       if (!this.isSorting) {
         const blocks = document.querySelectorAll(".block");
         this.randomizeBlocks(blocks);
+      }
+    });
+
+    stopBtn.addEventListener("click", () => {
+      if (this.isSorting) {
+        this.isStop = true;
+        const blocks = document.querySelectorAll(".block");
+        setTimeout(() => this.clearBlocksColor(blocks), 30);
       }
     });
   }
@@ -132,7 +145,15 @@ class SortingVisualizer {
     });
   }
 
-  stop() {}
+  clearBlocksColor(blocks) {
+    blocks.forEach((block) => {
+      setBlockBackground(block, baseColor);
+    });
+  }
+
+  isStopped() {
+    return this.isStop;
+  }
 
   async prepareBlocksForSort(blocks) {
     blocks.forEach((block) => {

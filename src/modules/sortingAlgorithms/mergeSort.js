@@ -5,8 +5,9 @@ import {
 } from "../helpers/block";
 import getCurrentSpeed from "../helpers/getCurrentSpeed";
 import { greenColor, redColor, baseColor } from "../helpers/colors";
+import { withEndVisualization } from "../helpers/withEndVisualization";
 
-const mergeSort = async (blocks, n) => {
+const mergeSort = async (blocks, n, isStopped) => {
   const arr = createValuesArrFromBlocks(blocks);
   const len = n;
 
@@ -18,6 +19,7 @@ const mergeSort = async (blocks, n) => {
       let rightTo = Math.min(right + size, len);
 
       while (left < leftTo && right < rightTo) {
+        if (isStopped()) return;
         const speed = getCurrentSpeed();
 
         await visualizeBlocks(blocks[left], blocks[right], greenColor, speed);
@@ -52,4 +54,4 @@ const mergeSort = async (blocks, n) => {
   }
 };
 
-export default mergeSort;
+export default withEndVisualization(mergeSort);

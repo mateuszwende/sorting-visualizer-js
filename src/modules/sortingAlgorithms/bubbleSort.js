@@ -5,8 +5,9 @@ import {
 } from "../helpers/block";
 import { greenColor, redColor, baseColor } from "../helpers/colors";
 import getCurrentSpeed from "../helpers/getCurrentSpeed";
+import { withEndVisualization } from "../helpers/withEndVisualization";
 
-const bubbleSort = async (blocks, n) => {
+const bubbleSort = async (blocks, n, isStopped) => {
   const arr = createValuesArrFromBlocks(blocks);
 
   let swapped;
@@ -14,6 +15,7 @@ const bubbleSort = async (blocks, n) => {
   do {
     swapped = false;
     for (let i = 0; i < n - 1; i++) {
+      if (isStopped()) return;
       const speed = getCurrentSpeed();
 
       await visualizeBlocks(blocks[i], blocks[i + 1], greenColor, speed);
@@ -33,4 +35,4 @@ const bubbleSort = async (blocks, n) => {
   } while (swapped);
 };
 
-export default bubbleSort;
+export default withEndVisualization(bubbleSort);
