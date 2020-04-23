@@ -37,6 +37,12 @@
           color: #1ee0eb;
           background: lighten(#232323, 10%);
         }
+
+        &.blocked {
+          color: grey;
+          background: transparent;
+          cursor: default;
+        }
       }
     }
 

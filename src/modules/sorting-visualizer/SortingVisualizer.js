@@ -89,6 +89,9 @@ class SortingVisualizer {
 
     elems.forEach((elem) => {
       elem.addEventListener("click", (e) => {
+        const isBlocked = e.target.classList.contains("blocked");
+        if (isBlocked) return;
+
         elems.forEach((elem) => elem.classList.remove("active"));
         e.target.classList.add("active");
         this.currentAlgorithm = this.algorithms[
@@ -122,6 +125,25 @@ class SortingVisualizer {
     document.getElementById("sortBtn").disabled = isSorting;
     document.getElementById("randomizeBtn").disabled = isSorting;
     document.getElementById("elementsNum").disabled = isSorting;
+    this.handleOtherNavAlgorithms(isSorting);
+  }
+
+  handleOtherNavAlgorithms(isSorting) {
+    const elems = document.querySelectorAll(".nav-algorithm-js");
+
+    if (isSorting) {
+      elems.forEach((elem) =>
+        !elem.classList.contains("active")
+          ? elem.classList.add("blocked")
+          : null
+      );
+    } else {
+      elems.forEach((elem) =>
+        elem.classList.contains("blocked")
+          ? elem.classList.remove("blocked")
+          : null
+      );
+    }
   }
 
   createBlocks(n) {
