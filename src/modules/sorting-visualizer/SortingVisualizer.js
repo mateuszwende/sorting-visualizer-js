@@ -79,7 +79,7 @@ class SortingVisualizer {
       if (this.isSorting) {
         this.isStop = true;
         const blocks = document.querySelectorAll(".block");
-        setTimeout(() => this.clearBlocksColor(blocks), 30);
+        setTimeout(() => this.clearBlocksColor(blocks), 50);
       }
     });
   }
