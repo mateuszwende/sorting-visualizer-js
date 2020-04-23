@@ -3,15 +3,14 @@ import {
   visualizeSwapBlocks,
   visualizeBlock,
   createValuesArrFromBlocks,
-} from "../utils/block";
-import getCurrentSpeed from "../utils/getCurrentSpeed";
+} from "../helpers/block";
+import getCurrentSpeed from "../helpers/getCurrentSpeed";
 import {
   greenColor,
   redColor,
   baseColor,
-  purpleColor,
   yellowColor,
-} from "../utils/colors";
+} from "../helpers/colors";
 
 const partition = async (arr, start, end, blocks) => {
   let i = start + 1;
@@ -65,13 +64,10 @@ const quickSortAlgo = async (arr, start, end, blocks) => {
   }
 };
 
-export const quickSort = async (blocks, n) => {
+const quickSort = async (blocks, n) => {
   const arr = createValuesArrFromBlocks(blocks);
 
   await quickSortAlgo(arr, 0, arr.length - 1, blocks);
-
-  let speed = getCurrentSpeed();
-  for (let j = 0; j < n; j++) {
-    await visualizeBlock(blocks[j], purpleColor, speed + 100);
-  }
 };
+
+export default quickSort;

@@ -1,14 +1,12 @@
 import {
-  visualizeEnd,
   visualizeBlocks,
   updateBlocksFromArray,
   createValuesArrFromBlocks,
-  visualizeBlock,
-} from "../utils/block";
-import getCurrentSpeed from "../utils/getCurrentSpeed";
-import { greenColor, redColor, baseColor, purpleColor } from "../utils/colors";
+} from "../helpers/block";
+import getCurrentSpeed from "../helpers/getCurrentSpeed";
+import { greenColor, redColor, baseColor } from "../helpers/colors";
 
-export const mergeSort = async (blocks, n) => {
+const mergeSort = async (blocks, n) => {
   const arr = createValuesArrFromBlocks(blocks);
   const len = n;
 
@@ -52,9 +50,6 @@ export const mergeSort = async (blocks, n) => {
       }
     }
   }
-
-  const speed = getCurrentSpeed();
-  for (let j = 0; j < n; j++) {
-    await visualizeBlock(blocks[j], purpleColor, speed + 50);
-  }
 };
+
+export default mergeSort;

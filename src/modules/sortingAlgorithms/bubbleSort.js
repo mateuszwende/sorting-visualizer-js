@@ -1,13 +1,12 @@
 import {
   visualizeSwapBlocks,
-  visualizeBlock,
   visualizeBlocks,
   createValuesArrFromBlocks,
-} from "../utils/block";
-import { greenColor, redColor, baseColor, purpleColor } from "../utils/colors";
-import getCurrentSpeed from "../utils/getCurrentSpeed";
+} from "../helpers/block";
+import { greenColor, redColor, baseColor } from "../helpers/colors";
+import getCurrentSpeed from "../helpers/getCurrentSpeed";
 
-export const bubbleSort = async (blocks, n) => {
+const bubbleSort = async (blocks, n) => {
   const arr = createValuesArrFromBlocks(blocks);
 
   let swapped;
@@ -32,9 +31,6 @@ export const bubbleSort = async (blocks, n) => {
       await visualizeBlocks(blocks[i], blocks[i + 1], baseColor, speed);
     }
   } while (swapped);
-
-  const speed = getCurrentSpeed();
-  for (let j = 0; j < n; j++) {
-    await visualizeBlock(blocks[j], purpleColor, speed + 100);
-  }
 };
+
+export default bubbleSort;

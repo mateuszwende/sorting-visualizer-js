@@ -1,3 +1,3 @@
-export const test = () => {
-  document.querySelector("p").innerHTML = "TAKI WUJ";
-};
+export { default as bubbleSort } from "./bubbleSort";
+export { default as mergeSort } from "./mergeSort";
+export { default as quickSort } from "./quickSort";
