@@ -22,21 +22,14 @@ export const getAllBlocks = () => {
   return blocks;
 };
 
-const swapProperties = (block_1, block_2, speed) => {
+const swapProperties = (block_1, block_2) => {
   const tempValue_1 = block_1.dataset.value;
   const tempBgColor_1 = block_1.style.backgroundColor;
 
-  const blockWidth = block_1.style.width.slice(0, 2);
-  if (blockWidth > 23) {
-    block_1.innerText = block_2.dataset.value;
-    block_2.innerText = tempValue_1;
-  }
-
-  block_1.style.height = block_2.style.height;
+  updateBlock(block_1, block_2.dataset.value);
   block_1.style.backgroundColor = block_2.style.backgroundColor;
-  block_1.dataset.value = block_2.dataset.value;
-  block_2.style.height = `${tempValue_1}px`;
-  block_2.dataset.value = tempValue_1;
+
+  updateBlock(block_2, tempValue_1);
   block_2.style.backgroundColor = tempBgColor_1;
 };
 
@@ -50,8 +43,11 @@ export const visualizeSwapBlocks = async (block_1, block_2, speed) => {
 };
 
 export const updateBlock = (block, value) => {
+  const blockWidth = block.style.width.slice(0, 2);
+  if (blockWidth > 23) {
+    block.innerText = value;
+  }
   block.dataset.value = value;
-  block.innerText = value;
   block.style.height = `${value}px`;
 };
 

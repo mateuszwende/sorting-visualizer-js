@@ -71,6 +71,7 @@ class SortingVisualizer {
     randomizeBtn.addEventListener("click", () => {
       if (!this.isSorting) {
         const blocks = document.querySelectorAll(".block");
+        this.clearBlocksColor(blocks);
         this.randomizeBlocks(blocks);
       }
     });
@@ -79,7 +80,6 @@ class SortingVisualizer {
       if (this.isSorting) {
         this.isStop = true;
         const blocks = document.querySelectorAll(".block");
-        setTimeout(() => this.clearBlocksColor(blocks), 50);
       }
     });
   }
