@@ -32,6 +32,7 @@ module.exports = {
   plugins: [
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
+      filename: "../index.html",
       title: "Sort Algorithms Visualizer",
       template: "./src/templates/main.html",
       favicon: "./src/assets/images/favicon.png",

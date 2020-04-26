@@ -7,7 +7,7 @@ Currently there are:
 - Merge Sort
 - Quick Sort
 
-[DEMO](https://mateuszwende.github.io/sorting-visualizer-js/dist/)
+DEMO: [https://mateuszwende.github.io/sorting-visualizer-js/](https://mateuszwende.github.io/sorting-visualizer-js/)
 
 ## Setup
 
