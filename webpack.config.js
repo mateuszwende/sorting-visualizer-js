@@ -13,7 +13,15 @@ module.exports = {
     rules: [
       {
         test: /\.s[ac]ss$/i,
-        use: ["style-loader", "css-loader", "sass-loader"],
+        use: [
+          "style-loader",
+          "css-loader",
+          "resolve-url-loader",
+          {
+            loader: "sass-loader",
+            options: { sourceMap: true },
+          },
+        ],
       },
       {
         test: /\.html$/i,
@@ -32,7 +40,6 @@ module.exports = {
   plugins: [
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
-      filename: "../index.html",
       title: "Sort Algorithms Visualizer",
       template: "./src/templates/main.html",
       favicon: "./src/assets/images/favicon.png",
